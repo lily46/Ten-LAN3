@@ -1,0 +1,8 @@
+GAME_ICON ICON "icon.ico"
+
+SYSFONT    FONTFILE "./material/migmix-1m-regular.ttf"
+SYSIMG     IMAGE    "./material/startup.png"
+
+MAINTHEME  SOUND    "./material/BigPresent.ogg"
+
+DEFAULTIMG IMAGE "./material/default.png"
