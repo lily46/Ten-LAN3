@@ -15,6 +15,9 @@ private:
 	class Key *key;
 	int pad2keysleep;
 
+	// UIの種類。
+	int ui;
+
 	// 終了時間。
 	int exittime;
 	// 展示モード
@@ -43,6 +46,7 @@ public:
 	virtual const char * GetGameDirectory( void );
 
 	virtual int GetMode( void );
+	virtual int GetUIType( void );
 	virtual int IsHideTaskbar( void );
 	virtual int IsViewCategory( void );
 	virtual int IsViewNewGame( void );

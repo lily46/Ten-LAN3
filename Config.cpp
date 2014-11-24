@@ -27,6 +27,8 @@ int Config::Init( class Key *key )
 
 	logcgi = NULL;
 
+	ui = 0;
+
 	return 0;
 }
 
@@ -65,6 +67,11 @@ const char * Config::GetGameDirectory()
 int Config::GetMode( void )
 {
 	return exhibition;
+}
+
+int Config::GetUIType( void )
+{
+	return ui;
 }
 
 int Config::IsHideTaskbar( void )
@@ -226,6 +233,9 @@ int Config::LoadConfig( const char *config )
 				{
 					gamedir[ strlen( gamedir ) - 1 ] = '\0';
 				}
+			} else if(strcmp( str, "UI" ) == 0)
+			{
+				ui = atoi( tok );
 			} else if(strcmp( str, "FULLSCREEN" ) == 0)
 			{
 				if(strncmp( tok, "true", 4 ) == 0)

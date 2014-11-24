@@ -4,6 +4,11 @@ class TenLANSystem *tenlan;
 
 class TenLANSystem *GameView::system = NULL;
 
+extern class GameView *GetTenLANBackGround( int type );
+extern class GameView *GetTenLANStartUp( int type );
+
+// GetTenLANUI.cpp ‚É‚¢‚ë‚¢‚ë‘‚¢‚Ä‚é‚©‚çŒ©‚ÄB
+
 void SystemInit( void )
 {
 	tenlan = new TenLANSystem();
@@ -14,8 +19,8 @@ void SystemInit( void )
 void UserInit( void )
 {
 	tenlan->Init();
-	tenlan->SetBackGround( new BackGround() );
-	tenlan->SetGameView( new StartUp() );
+	tenlan->SetBackGround( GetTenLANBackGround( 0 ) );
+	tenlan->SetGameView( GetTenLANStartUp( 0 ) );
 }
 
 int MainLoop( void )

@@ -5,6 +5,10 @@
 #include "Config.h"
 
 #define CATEGORY_MAX 11
+extern unsigned long CATE_COLOR[ CATEGORY_MAX ];
+extern unsigned long CATE_DCOLOR[ CATEGORY_MAX ];
+extern char CATE_NAME[ CATEGORY_MAX ][ 32 ];
+extern int CATE_SORT[ CATEGORY_MAX ];
 
 enum
 {
@@ -32,7 +36,7 @@ private:
 	class GameView *now, *next, *background;
 
 	// ゲーム情報。
-	int gamemax;
+	unsigned int gamemax;
 	int execgamenum;
 	struct GameData *gamedata;
 	char usecate[ CATEGORY_MAX ]; // TODO:
@@ -138,7 +142,7 @@ public:
 	virtual int GetGameMainCategory( unsigned int gamenum );
 
 	// ! ゲームの持つカテゴリ最大数を取得。
-	virtual int GetGameCaetgoryMax( unsigned int gamenum );
+	virtual unsigned int GetGameCaetgoryMax( unsigned int gamenum );
 
 	// ! ゲームのサブカテゴリの値を取得。
 	virtual int GetGameCategory( unsigned int gamenum, unsigned int category );
@@ -206,103 +210,6 @@ public:
 	virtual void CleanUp( void ){}
 };
 
-// 実行は初めの一度きり。
-class StartUp : public GameView
-{
-private:
-	int timer;
-	int gamemax, loadgame;
-	int rad;
-	int mode;
-	virtual int DrawGameState( void );
-public:
-	virtual int Loading( void );
-	virtual void UserInit( void );
-	virtual void Resume( void );
-	virtual int MainLoop( void );
-	virtual void CleanUp( void );
-};
-
-// 背景。多分ほんとどなにもしない。
-class BackGround : public GameView
-{
-public:
-	virtual void UserInit( void );
-	virtual int MainLoop( void );
-	virtual void CleanUp( void );
-};
-
-class OP : public GameView
-{
-private:
-	int timer;
-	int tex;
-public:
-	// ! 一度だけ実行される準備フェーズ。
-	virtual void UserInit( void );
-	// ! UserInitの後とゲームが終了して返ってきた時に実行される復旧フェーズ。
-	virtual void Resume( void );
-	// ! UIのメイン部分を実行するフェーズ。
-	virtual int MainLoop( void );
-	// ! GameViewが破棄される前に実行される片付けフェーズ。
-	virtual void CleanUp( void );
-};
-
-// デフォルトのセレクト画面。
-class UIDefault : public GameView
-{
-private:
-	enum
-	{
-		UIMODE_SELECT,
-		UIMODE_SETTING,
-		UIMODE_INFO,
-		UIMODE_INFOBACK,
-		UIMODE_EXEC,
-		UIMODE_OTHER,
-	};
-	int mode;  // モード。
-	int timer; //タイマー。
-	int gamemax, minigamemax; // ゲーム数、ミニゲーム数。
-	int *game, nowgames; // ゲーム番号一覧、gameに入ってるゲーム数。gameの中身を書き換えていろいろやってる。
-	int category; // 現在我のカテゴリ。-2がミニゲームまとめて,-1が全部。それ以降はそのカテゴリのゲーム。
-	int tex; // テクスチャ番号。
-	int stoptime;
-	double scale;
-	int boxsize;
-	double centerline, stopline, radius;
-	double moveasp, speedline, speedline_;
-
-	int selectgame;
-
-	double infox, infoy, infospeed;
-	int infonum;
-
-	int fontsize;
-
-	// 設定用の変数。
-	int sselect[ 4 ];
-
-	virtual int SetGames( int category );
-	virtual int DrawBeginSelect( void );
-	virtual int DrawSelect( int acinput = 1 );
-	virtual int DrawSetting( void );
-	virtual int DrawInfomation( int acinput = 1 );
-	virtual int DrawInfomationBack( void );
-	virtual int DrawBackground( void );
-	virtual int DrawGameTitle( int gamenum );
-	virtual int DrawGameList( int basex = 0, int basey = 0 );
-	virtual double DrawBox( int dx, int dy, int gamenum, double scl = 1.0, unsigned char alpha = 255 );
-	virtual int ExecGame( int gamenum );
-	virtual int PrevSelectNumber( int select );
-	virtual int NextSelectNumber( int select );
-public:
-	virtual void UserInit( void );
-	virtual void Resume( void );
-	virtual int MainLoop( void );
-	virtual void CleanUp( void );
-};
-
 #define GAMEDATA_EXE_LEN   512
 #define GAMEDATA_TITLE_LEN 256
 #define GAMEDATA_TEXT_LEN  1024
@@ -310,7 +217,7 @@ public:
 
 struct GameData
 {
-	int num;                          // ゲーム番号。
+	unsigned int num;                 // ゲーム番号。
 	char exe[ GAMEDATA_EXE_LEN ];     // 起動パス。
 	char title[ GAMEDATA_TITLE_LEN ]; // ゲーム名。
 	char text[ GAMEDATA_TEXT_LEN ];   // 紹介文。
@@ -319,9 +226,10 @@ struct GameData
 	int pad2key;                      // Pad2Keyが有効かどうか。
 	int txnum;                        // 説明画像のテクスチャ番号。
 	char txfile[ GAMEDATA_TEX_LEN ];  // テクスチャのファイルパス。
-	int cnum;                         // 持っているカテゴリ数。
+	unsigned int cnum;                // 持っているカテゴリ数。
 	char category[ CATEGORY_MAX ];    // どのカテゴリに所属しているか。
 	char dvd;                         // DVD収録済みかどうか。
 };
+
 
 #endif

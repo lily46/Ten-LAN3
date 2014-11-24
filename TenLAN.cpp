@@ -74,6 +74,7 @@ TenLANSystem::TenLANSystem( void )
 		MikanWindow->SetWindowSize( width, height );
 	}
 
+	SetEnvironmentVariable( "TENLAN", "1" );
 
 	MikanWindow->SetWindowName( "Ten-LAN" );
 	MikanWindow->SetWindowIcon( "GAME_ICON" );
@@ -282,7 +283,7 @@ int TenLANSystem::InitGamelist( int gamemax, int *loadgame )
 	struct stat fstat;
 
 	char filepath[ 1024 ] = "";
-	char date[ 9 ];
+	char date[ 9 ] = "";
 	char buf[ 2048 ], *tok, *str;
 	int n = 0, msel = 0, r, w;
 	int _loadgame = 0;
@@ -358,12 +359,12 @@ int TenLANSystem::InitGamelist( int gamemax, int *loadgame )
 								}
 							} else if(strcmp( str, "date" ) == 0)
 							{
-								strncpy( date, strtok_s( NULL, "=", &tok ), 9 );
+								strncpy_s( date, strtok_s( NULL, "=", &tok ), 8 );
 								date[ 8 ] = '\0';
 								gamedata[ msel ].date = atou( date );
 							} else if(strcmp( str, "first" ) == 0)
 							{
-								strncpy( date, strtok_s( NULL, "=", &tok ), 9 );
+								strncpy_s( date, strtok_s( NULL, "=", &tok ), 8 );
 								date[ 8 ] = '\0';
 								gamedata[ msel ].first = atou( date );
 								gamedata[ msel ].nendo = nendo( gamedata[ msel ].first );
@@ -786,7 +787,7 @@ int TenLANSystem::GetGameMax( void ){
 int TenLANSystem::GetGameMax( unsigned int category )
 {
 	int count = 0;
-	int i, c;
+	unsigned int i, c;
 
 	if(CATEGORY_MAX <= category)
 	{
@@ -811,7 +812,7 @@ int TenLANSystem::GetGameMax( unsigned int category )
 int TenLANSystem::GetGameNumbers( int *gamearray, int gamenum, int start )
 {
 	int count = 0;
-	int i;
+	unsigned int i;
 
 	for(i = 0 ; i < gamemax ; ++i)
 	{
@@ -832,7 +833,7 @@ int TenLANSystem::GetGameNumbers( int *gamearray, int gamenum, int start )
 int TenLANSystem::GetGameNumbers( unsigned int category, int *gamearray, int gamenum, int start )
 {
 	int count = 0;
-	int i, c;
+	unsigned int i, c;
 
 	if(CATEGORY_MAX <= category)
 	{
@@ -861,7 +862,8 @@ int TenLANSystem::GetGameNumbers( unsigned int category, int *gamearray, int gam
 int TenLANSystem::GetGameNumbersNotCategory( unsigned int notcategory, int *gamearray, int gamenum, int start )
 {
 	int count = 0;
-	int i, c, ok;
+	unsigned int i, c;
+	int ok;
 
 	if(CATEGORY_MAX <= notcategory)
 	{
@@ -902,7 +904,7 @@ int TenLANSystem::GetGameMainCategory( unsigned int gamenum )
 	return gamedata[ gamenum ].category[ 0 ];
 }
 
-int TenLANSystem::GetGameCaetgoryMax( unsigned int gamenum )
+unsigned int TenLANSystem::GetGameCaetgoryMax( unsigned int gamenum )
 {
 	if(gamemax <= gamenum)
 	{

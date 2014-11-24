@@ -3,6 +3,7 @@
 *.lo
 *.o
 *.obj
+*.opensdf
 
 # Compiled Dynamic libraries
 *.so
@@ -14,6 +15,8 @@
 *.la
 *.a
 *.lib
+*.ilk
+*.idb
 
 # Executables
 *.exe
@@ -25,3 +28,6 @@
 *.db
 *.res
 *.log
+
+# GameDirectory
+Game/*
