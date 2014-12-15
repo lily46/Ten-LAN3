@@ -616,7 +616,7 @@ int TenLANSystem::CleanupExecGame( void )
 
 	execgamenum = -1;
 
-	MikanSound->Play( 0, true );
+	//MikanSound->Play( 0, true );
 	MikanSound->SetVolume( 0, 80 );
 
 

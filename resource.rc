@@ -1,8 +1,17 @@
 GAME_ICON ICON "icon.ico"
 
-SYSFONT    FONTFILE "./material/migmix-1m-regular.ttf"
-SYSIMG     IMAGE    "./material/startup.png"
+SYSFONT     FONTFILE "./material/migmix-1m-regular.ttf"
+SYSIMG      IMAGE    "./material/startup.png"
 
-MAINTHEME  SOUND    "./material/BigPresent.ogg"
+MAINTHEME   SOUND    "./material/BigPresent.ogg"
+SELECT_BGM0 SOUND    "./material/sky0.ogg"
+SELECT_BGM1 SOUND    "./material/sky1.ogg"
+SELECT_BGM2 SOUND    "./material/sky2.ogg"
+SELECT_BGM3 SOUND    "./material/sky3.ogg"
+SELECT_BGM4 SOUND    "./material/sky4.ogg"
 
-DEFAULTIMG IMAGE    "./material/default.png"
+OK_SE       SOUND    "./material/ok.wav"
+SELECT_SE   SOUND    "./material/select.wav"
+
+DEFAULTIMG  IMAGE    "./material/default.png"
+RANDOM      IMAGE    "./material/random.png"

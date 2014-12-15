@@ -1,5 +1,6 @@
 #include "DefaultGameView.h"
 #include "UI\DefaultUI.h"
+#include "UI\ui2014.h"
 
 // UIの生成作業はここで行うので、UIを追加する場合はここと自分でつくたファイルを改編する。
 // UI/などに自分の作ったGameViewを継承したUIのヘッダを読み込む。
@@ -12,7 +13,7 @@ class GameView *GetTenLANUI( int type )
 	{
 	case 0:
 	default:
-		return new UIDefault();
+		return new UI2014();
 	}
 }
 

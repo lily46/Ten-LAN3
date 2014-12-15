@@ -134,7 +134,7 @@ int StartUp::MainLoop( void )
 			MikanDraw->DrawTextureRotateScaleC( 0, system->GetWidth() / 2 - 170, system->GetHeight() / 2 + 24, 320, 160, 70, 70, 2.0, rad_ ); // e
 		} else
 		{
-			if(mode == 1)
+			if(1/*mode == 1*/)
 			{
 				if(timer < atimer)
 				{
@@ -233,7 +233,7 @@ void OP::UserInit( void )
 	//if (system->GetMode())
 	//{
 	MikanSound->Load( 0, NULL, "MAINTHEME" );
-	MikanSound->Play( 0, true );
+	//MikanSound->Play( 0, true );
 	MikanSound->SetVolume( 0, 80 );
 	//}
 #endif
@@ -253,6 +253,8 @@ int OP::MainLoop( void )
 		MikanInput->GetKeyNum( K_Z ), MikanInput->GetKeyNum( K_X ), MikanInput->GetKeyNum( K_A ), MikanInput->GetKeyNum( K_S ),
 		MikanInput->GetKeyNum( K_D ), MikanInput->GetKeyNum( K_C )
 		);
+	MikanDraw->Printf(0, 0, 150, "Zキーでゲーム選択画面へ");
+
 	if(system->GetGameMax() > 0)
 	{
 		if(MikanInput->GetKeyNum( K_Z ) == -1)

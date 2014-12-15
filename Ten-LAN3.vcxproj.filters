@@ -16,6 +16,9 @@
     <Filter Include="DefaultUI">
       <UniqueIdentifier>{e9ba0659-0f3f-4b8c-ac9c-376d2b05a86b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UI2014">
+      <UniqueIdentifier>{82c20040-c659-418a-9223-73bc9a793f3f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ten-LAN3.cpp">
@@ -38,6 +41,9 @@
     </ClCompile>
     <ClCompile Include="GetTenLANUI.cpp">
       <Filter>ソース</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\ui2014.cpp">
+      <Filter>UI2014</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -69,8 +75,14 @@
     <ClInclude Include="UI\DefaultUI.h">
       <Filter>DefaultUI</Filter>
     </ClInclude>
+    <ClInclude Include="UI\ui2014.h">
+      <Filter>UI2014</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="config.ini" />
+    <None Include="image1.bin">
+      <Filter>リソース</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -88,6 +88,7 @@
     <ClCompile Include="Ten-LAN3.cpp" />
     <ClCompile Include="TenLAN.cpp" />
     <ClCompile Include="UI\DefaultUI.cpp" />
+    <ClCompile Include="UI\ui2014.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="icon.ico" />
@@ -104,9 +105,11 @@
     <ClInclude Include="Key.h" />
     <ClInclude Include="TenLAN.h" />
     <ClInclude Include="UI\DefaultUI.h" />
+    <ClInclude Include="UI\ui2014.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="config.ini" />
+    <None Include="image1.bin" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
